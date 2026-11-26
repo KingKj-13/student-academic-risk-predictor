@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Student Risk{% endblock %} · Early-Warning System</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>Early-Warning System</a>
+      <nav aria-label="Main">
+        <a href="/" {% if active == "predict" %}aria-current="page"{% endif %}>New prediction</a>
+        <a href="/upload" {% if active == "upload" %}aria-current="page"{% endif %}>Bulk upload</a>
+        <a href="/dashboard" {% if active == "dashboard" %}aria-current="page"{% endif %}>Dashboard</a>
+        <a href="/docs">API docs</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="wrap foot">
+    Predictions are model estimates to support a teacher's judgement. They are not a verdict on any student.
+    The bundled model is trained on synthetic data.
+  </footer>
+  <script src="/static/js/common.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

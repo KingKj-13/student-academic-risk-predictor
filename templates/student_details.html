@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Student {{ student_id }}{% endblock %}
+{% block content %}
+<p><a href="/dashboard">← Back to dashboard</a></p>
+<div id="student" data-student-id="{{ student_id }}">
+  <h1 id="student-name">Loading…</h1>
+  <p id="details-error" class="error" role="alert" hidden></p>
+  <div id="details" hidden>
+    <div class="split">
+      <section class="card result" id="current"></section>
+      <section class="card">
+        <h2>Academic record</h2>
+        <dl id="record" class="record"></dl>
+      </section>
+    </div>
+    <section class="card">
+      <h2>Performance trend</h2>
+      <p id="trend-note" class="muted"></p>
+      <div class="chart-box"><canvas id="trend-chart" aria-label="Attendance, internal marks and assignment score over time"></canvas></div>
+    </section>
+    <section class="card">
+      <h2>Prediction history</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date and time</th><th>Risk</th><th>Confidence</th><th>Attendance</th><th>Internal</th><th>Assignment</th></tr></thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+    </section>
+    <div class="actions"><button id="delete-student" type="button" class="danger">Delete this student's records</button></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/vendor/chart.umd.js"></script>
+<script src="/static/js/details.js"></script>
+{% endblock %}

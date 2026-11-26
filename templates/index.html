@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}New prediction{% endblock %}
+{% block content %}
+<h1>Check a student's academic risk</h1>
+<p class="lead">Enter this term's figures. The record and the result are saved to the student's history.</p>
+
+<div class="split">
+  <form id="predict-form" class="card">
+    <div class="grid">
+      <label>Student ID
+        <input name="student_id" type="number" min="1" step="1" required>
+      </label>
+      <label>Student name
+        <input name="name" type="text" maxlength="100" required autocomplete="off">
+      </label>
+      <label>Attendance (%)
+        <input name="attendance_pct" type="number" min="0" max="100" step="0.1" required>
+      </label>
+      <label>Internal marks (0–100)
+        <input name="internal_marks" type="number" min="0" max="100" step="0.1" required>
+      </label>
+      <label>Study hours per week
+        <input name="study_hours_weekly" type="number" min="0" max="80" step="0.1" required>
+      </label>
+      <label>Previous failed subjects
+        <input name="past_failures" type="number" min="0" max="20" step="1" value="0" required>
+      </label>
+      <label>Assignment score (0–100)
+        <input name="assignment_score" type="number" min="0" max="100" step="0.1" required>
+      </label>
+      <label>Gender
+        <select name="gender" required>
+          <option value="">Choose…</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+        <small>Stored for fairness checks only. The model does not use it.</small>
+      </label>
+      <label>Extracurricular activities
+        <select name="extracurricular" required>
+          <option value="">Choose…</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+    </div>
+    <div class="actions">
+      <button type="submit">Predict risk</button>
+      <button type="reset" class="secondary">Clear</button>
+    </div>
+    <p id="form-error" class="error" role="alert" hidden></p>
+  </form>
+
+  <section id="result" class="card result" aria-live="polite">
+    <p class="muted">The prediction will appear here.</p>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/predict.js"></script>{% endblock %}

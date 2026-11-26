@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Bulk upload{% endblock %}
+{% block content %}
+<h1>Upload a class list</h1>
+<p class="lead">One row per student, up to 5,000 rows or 2 MB. Valid rows are processed even if others have mistakes.</p>
+
+<form id="upload-form" class="card">
+  <label>CSV file
+    <input type="file" name="file" accept=".csv,text/csv" required>
+  </label>
+  <p class="muted">Required columns:
+    <code>student_id, name, attendance_pct, internal_marks, study_hours_weekly, past_failures, assignment_score, gender, extracurricular</code>.
+    <a href="/api/sample-csv">Download a sample file</a>
+  </p>
+  <div class="actions"><button type="submit">Upload and predict</button></div>
+  <p id="upload-error" class="error" role="alert" hidden></p>
+</form>
+
+<section id="upload-output" hidden>
+  <div id="upload-summary" class="tiles"></div>
+
+  <div id="errors-card" class="card" hidden>
+    <h2>Rows that were not processed</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Row</th><th>Student ID</th><th>Problem</th></tr></thead>
+        <tbody id="errors-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Predictions</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Risk</th><th>Confidence</th><th>Contributing factors</th></tr></thead>
+        <tbody id="results-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/upload.js"></script>{% endblock %}

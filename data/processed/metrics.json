@@ -1,0 +1,353 @@
+{
+  "trained_at": "2026-11-26T19:55:35+00:00",
+  "sklearn_version": "1.9.1",
+  "train_rows": 400,
+  "test_rows": 100,
+  "test_class_counts": {
+    "Low": 55,
+    "Medium": 27,
+    "High": 18
+  },
+  "models": {
+    "Logistic Regression": {
+      "cv_selection_score": 0.905920042452373,
+      "cv_selection_std": 0.01084386381764518,
+      "best_params": {
+        "C": 10.0
+      },
+      "test": {
+        "accuracy": 0.82,
+        "precision_macro": 0.7783719548425431,
+        "recall_macro": 0.8094276094276095,
+        "f1_macro": 0.790775681341719,
+        "high_precision": 0.7272727272727273,
+        "high_recall": 0.8888888888888888,
+        "high_f1": 0.8,
+        "confusion_matrix": [
+          [
+            48,
+            7,
+            0
+          ],
+          [
+            3,
+            18,
+            6
+          ],
+          [
+            0,
+            2,
+            16
+          ]
+        ]
+      }
+    },
+    "Decision Tree": {
+      "cv_selection_score": 0.8232715857071478,
+      "cv_selection_std": 0.04373686451935112,
+      "best_params": {
+        "max_depth": 8,
+        "min_samples_leaf": 3
+      },
+      "test": {
+        "accuracy": 0.76,
+        "precision_macro": 0.7272082527401675,
+        "recall_macro": 0.7481481481481481,
+        "f1_macro": 0.7331957344341246,
+        "high_precision": 0.7,
+        "high_recall": 0.7777777777777778,
+        "high_f1": 0.7368421052631579,
+        "confusion_matrix": [
+          [
+            44,
+            11,
+            0
+          ],
+          [
+            3,
+            18,
+            6
+          ],
+          [
+            0,
+            4,
+            14
+          ]
+        ]
+      }
+    },
+    "Random Forest": {
+      "cv_selection_score": 0.8468427089058788,
+      "cv_selection_std": 0.003525063938497968,
+      "best_params": {
+        "max_depth": 6,
+        "min_samples_leaf": 3,
+        "n_estimators": 200
+      },
+      "test": {
+        "accuracy": 0.8,
+        "precision_macro": 0.7582250541395968,
+        "recall_macro": 0.7973063973063973,
+        "f1_macro": 0.7721829437434456,
+        "high_precision": 0.6956521739130435,
+        "high_recall": 0.8888888888888888,
+        "high_f1": 0.7804878048780488,
+        "confusion_matrix": [
+          [
+            46,
+            9,
+            0
+          ],
+          [
+            2,
+            18,
+            7
+          ],
+          [
+            0,
+            2,
+            16
+          ]
+        ]
+      }
+    }
+  },
+  "baseline_most_frequent": {
+    "accuracy": 0.55,
+    "precision_macro": 0.18333333333333335,
+    "recall_macro": 0.3333333333333333,
+    "f1_macro": 0.23655913978494625,
+    "high_precision": 0.0,
+    "high_recall": 0.0,
+    "high_f1": 0.0,
+    "confusion_matrix": [
+      [
+        55,
+        0,
+        0
+      ],
+      [
+        27,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        0
+      ]
+    ]
+  },
+  "best_model": "Logistic Regression",
+  "feature_importance": {
+    "internal_marks": 0.22652109557874558,
+    "past_failures": 0.11283608992341053,
+    "assignment_score": 0.08500245161333066,
+    "attendance_pct": 0.07646424570133337,
+    "study_hours_weekly": 0.04553757350657807,
+    "extracurricular": 0.0016659650274346905
+  },
+  "calibration": {
+    "brier_score": 0.23250907356844208,
+    "expected_calibration_error": 0.06019639889833818,
+    "bins": [
+      {
+        "range": "0.5-0.6",
+        "count": 7,
+        "mean_confidence": 0.5359760902614092,
+        "accuracy": 0.42857142857142855
+      },
+      {
+        "range": "0.6-0.7",
+        "count": 10,
+        "mean_confidence": 0.634448558977981,
+        "accuracy": 0.6
+      },
+      {
+        "range": "0.7-0.8",
+        "count": 10,
+        "mean_confidence": 0.7490182233088948,
+        "accuracy": 0.6
+      },
+      {
+        "range": "0.8-0.9",
+        "count": 5,
+        "mean_confidence": 0.8291408617776346,
+        "accuracy": 0.6
+      },
+      {
+        "range": "0.9-1.0",
+        "count": 68,
+        "mean_confidence": 0.9748152224448091,
+        "accuracy": 0.9411764705882353
+      }
+    ]
+  },
+  "fairness_by_gender": {
+    "Female": {
+      "students": 205,
+      "actual_high": 42,
+      "high_recall": 0.9523809523809523,
+      "false_high_rate": 0.024539877300613498,
+      "accuracy": 0.8780487804878049
+    },
+    "Male": {
+      "students": 286,
+      "actual_high": 47,
+      "high_recall": 0.9148936170212766,
+      "false_high_rate": 0.02510460251046025,
+      "accuracy": 0.8706293706293706
+    },
+    "Other": {
+      "students": 9,
+      "actual_high": 1,
+      "high_recall": 1.0,
+      "false_high_rate": 0.0,
+      "accuracy": 0.8888888888888888
+    }
+  },
+  "reference_low_risk": {
+    "attendance_pct": 81.3,
+    "internal_marks": 70.0,
+    "study_hours_weekly": 16.85,
+    "past_failures": 0.0,
+    "assignment_score": 76.0,
+    "extracurricular": "No"
+  },
+  "cleaning": {
+    "raw_rows": 508,
+    "gender_values_normalised": 12,
+    "extracurricular_values_normalised": 8,
+    "impossible_values_removed": 7,
+    "duplicate_rows_removed": 8,
+    "rows_without_valid_label_removed": 0,
+    "clean_rows": 500,
+    "missing_values_by_column": {
+      "attendance_pct": 13,
+      "internal_marks": 10,
+      "study_hours_weekly": 13,
+      "past_failures": 0,
+      "assignment_score": 10,
+      "extracurricular": 9
+    },
+    "class_counts": {
+      "Low": 275,
+      "Medium": 135,
+      "High": 90
+    }
+  },
+  "exploration": {
+    "means_by_risk": {
+      "Low": {
+        "attendance_pct": 82.33,
+        "internal_marks": 71.43,
+        "study_hours_weekly": 16.53,
+        "past_failures": 0.09,
+        "assignment_score": 77.28
+      },
+      "Medium": {
+        "attendance_pct": 70.24,
+        "internal_marks": 55.51,
+        "study_hours_weekly": 10.24,
+        "past_failures": 0.42,
+        "assignment_score": 60.16
+      },
+      "High": {
+        "attendance_pct": 62.17,
+        "internal_marks": 40.31,
+        "study_hours_weekly": 6.52,
+        "past_failures": 1.36,
+        "assignment_score": 46.84
+      }
+    },
+    "describe": {
+      "attendance_pct": {
+        "count": 487.0,
+        "mean": 75.47,
+        "std": 12.21,
+        "min": 36.1,
+        "25%": 67.75,
+        "50%": 75.8,
+        "75%": 83.6,
+        "max": 100.0
+      },
+      "internal_marks": {
+        "count": 490.0,
+        "mean": 61.55,
+        "std": 16.06,
+        "min": 18.0,
+        "25%": 51.0,
+        "50%": 61.0,
+        "75%": 72.0,
+        "max": 100.0
+      },
+      "study_hours_weekly": {
+        "count": 487.0,
+        "mean": 13.04,
+        "std": 5.94,
+        "min": 0.0,
+        "25%": 9.15,
+        "50%": 12.7,
+        "75%": 17.1,
+        "max": 32.7
+      },
+      "past_failures": {
+        "count": 500.0,
+        "mean": 0.41,
+        "std": 0.84,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 1.0,
+        "max": 5.0
+      },
+      "assignment_score": {
+        "count": 490.0,
+        "mean": 67.04,
+        "std": 16.68,
+        "min": 12.0,
+        "25%": 55.0,
+        "50%": 67.5,
+        "75%": 78.0,
+        "max": 100.0
+      }
+    },
+    "correlation": {
+      "attendance_pct": {
+        "attendance_pct": 1.0,
+        "internal_marks": 0.571,
+        "study_hours_weekly": 0.724,
+        "past_failures": -0.207,
+        "assignment_score": 0.639
+      },
+      "internal_marks": {
+        "attendance_pct": 0.571,
+        "internal_marks": 1.0,
+        "study_hours_weekly": 0.678,
+        "past_failures": -0.395,
+        "assignment_score": 0.764
+      },
+      "study_hours_weekly": {
+        "attendance_pct": 0.724,
+        "internal_marks": 0.678,
+        "study_hours_weekly": 1.0,
+        "past_failures": -0.265,
+        "assignment_score": 0.704
+      },
+      "past_failures": {
+        "attendance_pct": -0.207,
+        "internal_marks": -0.395,
+        "study_hours_weekly": -0.265,
+        "past_failures": 1.0,
+        "assignment_score": -0.329
+      },
+      "assignment_score": {
+        "attendance_pct": 0.639,
+        "internal_marks": 0.764,
+        "study_hours_weekly": 0.704,
+        "past_failures": -0.329,
+        "assignment_score": 1.0
+      }
+    }
+  }
+}
