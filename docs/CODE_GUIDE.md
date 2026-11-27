@@ -54,7 +54,9 @@ because other columns can carry the same information.
 
 **How are contributing factors found?**
 For one input at a time, replace the student's value with the typical Low-risk value and predict again. If
-the risk drops by at least 0.05, that input is listed. This describes the model, not the true cause.
+the risk drops by at least 0.05, that input is listed. Values that are clearly weak (below 80% of typical, or
+any extra failure) are listed too, because a very weak student stays High even after one value is repaired.
+This describes the model, not the true cause.
 
 **What does the confidence mean?**
 The model's probability for the chosen class. The Brier score and expected calibration error measure how far

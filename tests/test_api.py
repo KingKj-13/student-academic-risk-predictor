@@ -8,6 +8,7 @@ import alerts
 from conftest import STRONG, WEAK
 from db import STUDENT_COLUMNS
 from main import create_app
+from predictor import FACTOR_TEXT
 
 
 def csv_file(rows, header=STUDENT_COLUMNS, name="class.csv"):
@@ -32,6 +33,13 @@ def test_weak_student_is_high_risk_with_factors(client):
     assert body["contributing_factors"]
     assert 0 <= body["confidence"] <= 1
     assert sum(body["probabilities"].values()) == pytest.approx(1, abs=0.01)
+
+
+def test_very_weak_student_lists_every_weak_value(client):
+    very_weak = {**WEAK, "attendance_pct": 58, "internal_marks": 38, "study_hours_weekly": 4,
+                 "past_failures": 2, "assignment_score": 44}
+    factors = client.post("/api/predict", json=very_weak).json()["contributing_factors"]
+    assert sorted(factors) == sorted(FACTOR_TEXT.values())
 
 
 def test_strong_student_is_low_risk(client):

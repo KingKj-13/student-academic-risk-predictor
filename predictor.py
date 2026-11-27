@@ -99,11 +99,12 @@ class RiskPredictor:
 
         output = []
         for row_index in range(len(frame)):
-            order = np.argsort(effects[row_index])[::-1]
-            chosen = [names[i] for i in order if effects[row_index, i] >= MIN_EFFECT]
-            if not chosen:
-                # No single change moves the score much: list what is clearly weak instead.
-                chosen = self._clearly_weak(frame.iloc[row_index])
+            # A very weak student stays High even if one value is repaired, so the
+            # "what if" effect alone would hide most problems. Clearly weak values
+            # are therefore always listed too, ordered by their effect.
+            weak = self._clearly_weak(frame.iloc[row_index])
+            order = np.argsort(-effects[row_index], kind="stable")
+            chosen = [names[i] for i in order if effects[row_index, i] >= MIN_EFFECT or names[i] in weak]
             output.append([FACTOR_TEXT[name] for name in chosen])
         return output
 

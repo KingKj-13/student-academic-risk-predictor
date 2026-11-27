@@ -29,7 +29,7 @@ nav { display: flex; flex-wrap: wrap; gap: .25rem; }
 nav a { color: #d5ddf0; text-decoration: none; padding: .35rem .75rem; border-radius: 6px; }
 nav a:hover, nav a[aria-current="page"] { background: rgb(255 255 255 / 14%); color: #fff; }
 
-h1 { font-size: 1.6rem; margin: 1.6rem 0 .3rem; }
+h1 { font-size: 1.6rem; margin: 1.6rem 0 .3rem; overflow-wrap: anywhere; }
 h2 { font-size: 1.05rem; margin: 0 0 .8rem; }
 h3 { font-size: .92rem; margin: 1rem 0 .3rem; }
 a { color: var(--accent); }
@@ -79,7 +79,8 @@ button:disabled { opacity: .5; cursor: default; }
 .table-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; margin-bottom: .6rem; }
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; }
 .table-scroll { overflow-x: auto; }
-td a { white-space: nowrap; }
+/* Normal names stay on one line; very long ones wrap instead of widening the table. */
+td a { display: inline-block; width: max-content; max-width: 16rem; overflow-wrap: break-word; }
 table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); }
 th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
