@@ -318,8 +318,9 @@ def train(df: pd.DataFrame, model_path: Path = config.MODEL_PATH, folder: Path =
         ax.bar(positions + (offset - 1) * 0.26, [results[name]["test"][k] for k in metric_keys], 0.25,
                label=name, color=colour)
     ax.set_xticks(positions, metric_names)
-    ax.set(ylim=(0, 1.05), title="Test-set performance of the three algorithms")
-    ax.legend(loc="lower right")
+    ax.set(ylim=(0, 1.18), title="Test-set performance of the three algorithms")
+    ax.set_yticks(np.arange(0, 1.01, 0.2))
+    ax.legend(loc="upper center", ncols=3, frameon=False)
     _save(fig, folder, "eval_model_comparison.png")
 
     importance = permutation_importance(best, x_test, y_test, scoring=make_scorer(selection_score),
